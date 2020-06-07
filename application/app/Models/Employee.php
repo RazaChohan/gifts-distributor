@@ -45,7 +45,7 @@ class Employee extends Model
         }
         $employee->name = $name;
         $employee->save();
-        $employee->interests()->attach($employeeInterests);
+        $employee->interests()->sync($employeeInterests);
         return $employee->id;
     }
 
