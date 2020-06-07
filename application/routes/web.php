@@ -15,3 +15,14 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+//Score Controller group
+$router->group(['prefix' => 'employee'], function () use ($router) {
+    //get user
+    $router->get(
+        '/gift',
+        [
+            'uses' => 'EmployeeController@getGift'
+        ]
+    );
+});
+

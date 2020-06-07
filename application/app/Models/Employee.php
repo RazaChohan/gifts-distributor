@@ -25,6 +25,16 @@ class Employee extends Model
     {
         return $this->belongsToMany(Category::class, 'employee_interests', 'employee_id', 'category_id');
     }
+
+    /***
+     * Gift relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function gift()
+    {
+        return $this->belongsToMany(Gift::class, 'employee_gifts', 'employee_id', 'gift_id');
+    }
     /***
      * insert employee
      *
@@ -47,6 +57,29 @@ class Employee extends Model
         $employee->save();
         $employee->interests()->sync($employeeInterests);
         return $employee->id;
+    }
+
+    /***
+     * Get employee
+     *
+     * @param $employeeID
+     * @return mixed
+     */
+    public function getEmployeeByID($employeeID)
+    {
+        $employee = new $this();
+        return $employee->where('id', '=', $employeeID)->first();
+    }
+
+    /***
+     * Assign gift to user
+     *
+     * @param $employee
+     * @param $giftID
+     */
+    public function assignGiftToUser($employee, $giftID)
+    {
+        $employee->gift()->attach($giftID);
     }
 
 
