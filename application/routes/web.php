@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
 //Score Controller group
 $router->group(['prefix' => 'employee'], function () use ($router) {
     //get user
-    $router->get(
+    $router->post(
         '/gift',
         [
             'uses' => 'EmployeeController@getGift'
