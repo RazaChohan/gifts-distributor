@@ -51,7 +51,7 @@ class EmployeeController extends Controller
                             $response['message'] = 'No Gift to assign!';
                         }
                     } else {
-                        $responseCode = Response::HTTP_BAD_REQUEST;
+                        $responseCode = Response::HTTP_OK;
                         $response['message'] = 'Gift already assigned';
                         $assignedGift = $employee->gift->first();
                         $response['data'] = ['gift' => !is_null($assignedGift) ? $assignedGift->name : ""];
