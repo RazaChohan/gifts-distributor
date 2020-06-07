@@ -14,41 +14,41 @@ $ git clone https://github.com/RazaChohan/gifts-distributor.git
 127.0.0.1 http://api.gifts_distributor.local/
 ```
 
-- Create docker containers:
+####  3. Create docker containers:
 
 ```bash
 $ docker-compose up -d
 ```
 
-#### 3. Confirm three running containers for php, nginx, & mysql:
+#### 4. Confirm three running containers for php, nginx, & mysql:
 
 ```bash
 $ docker-compose ps 
 ```
 
-#### 4. Install composer packages:
+#### 5. Install composer packages:
 
 ```bash
 $ docker-compose run php composer install 
 ```
-#### 5. Create Database schema:
+#### 6. Create Database schema:
 
 ```bash
 $ docker-compose run php php artisan migrate 
 ```
 
-#### 6. Load data is Database from json files:
+#### 7. Load data is Database from json files:
 
 ```bash
 $ docker-compose run php php artisan db:seed
 ```
 
-#### 7. Sync user purchased products call:
+#### 8. Sync user purchased products call:
 ```bash
  $ curl -X POST -H "Content-Type: application/json" http://api.gifts_distributor.local/employee/gift -d '{"employee_id": 1}'
 ```
 
-#### 8. Solution Explanation:
+#### 9. Solution Explanation:
 - Two insertions of same gift is handled by unique constraint on database and in codebase the exception is handled 
   and getGift is called again to assign another gift to user. (Handling high load problem).
 - Gift selection and categories matching with interest of employee is handled by following query.
