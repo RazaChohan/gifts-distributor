@@ -14,7 +14,7 @@ class GiftsSeeder extends Seeder
      */
     public function run()
     {
-        $storagePath  = Storage::disk('local')->path('gifts.json');
+        $storagePath  = storage_path() . '/data/gifts.json';
         //Check if file exists
         if(file_exists($storagePath)) {
             $gifts = json_decode(file_get_contents($storagePath), true);
@@ -33,7 +33,7 @@ class GiftsSeeder extends Seeder
                 }
             }
         } else {
-            exit('Employees File not found!!');
+            exit('Gifts File not found!!');
         }
     }
 }

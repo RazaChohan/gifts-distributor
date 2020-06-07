@@ -14,7 +14,7 @@ class EmployeesSeeder extends Seeder
      */
     public function run()
     {
-        $storagePath  = Storage::disk('local')->path('employees.json');
+        $storagePath  = storage_path() . '/data/employees.json';
         //Check if file exists
         if(file_exists($storagePath)) {
             $employees = json_decode(file_get_contents($storagePath), true);
